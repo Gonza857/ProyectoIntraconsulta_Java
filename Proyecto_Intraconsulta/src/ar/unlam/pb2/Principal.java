@@ -7,8 +7,6 @@ public class Principal {
 		
 		
 		// editado en rama master
-		
-		// editado en rama gonza
 	}
 
 }

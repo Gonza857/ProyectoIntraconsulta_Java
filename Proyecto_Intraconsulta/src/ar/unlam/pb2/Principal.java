@@ -6,6 +6,7 @@ public class Principal {
 
 		
 		int messi = 10;
+		int francia = 2;
 		// editado en rama master
 	}
 

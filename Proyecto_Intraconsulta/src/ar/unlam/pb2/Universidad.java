@@ -1,4 +1,4 @@
-package ar.unlam.pb2;
+	package ar.unlam.pb2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +10,14 @@ public class Universidad {
 	private List<Alumno> alumnos;
 	private List<Materia> materias;
 	private List<Aula> aulas;
+	private List<Comision> comisiones;
 	
 	
 	public Universidad (String nombre) {
 		this.nombre = nombre;
 		this.materias = new ArrayList<>();
 		this.alumnos = new ArrayList<>();
+		this.comisiones = new ArrayList<>();
 	}
 	
 	public List<Materia> getMaterias () {
@@ -29,7 +31,7 @@ public class Universidad {
 		materias.add(nuevaMateria);
 		if (materias.size() > largo) {
 			fueAgregada = true;
-			System.out.println("Largo: " + this.materias.size());
+			System.out.println("Materia " + nombre +  " agregada.");
 		}
 		return fueAgregada;
 	}
@@ -69,6 +71,7 @@ public class Universidad {
 			this.alumnos.add(nuevoAlumno);
 			if (this.alumnos.size() > largo ) {
 				fueAgregado = true;
+				System.out.println(dniAlumno + " registrado.");
 			}
 		}
 		
@@ -92,6 +95,51 @@ public class Universidad {
 	
 	public List<Alumno> getAlumnosRegistrados () {
 		return this.alumnos;
+	}
+	
+	public Alumno getAlumno (Integer dni) {
+		Alumno buscado = null;
+		for (int i = 0; i < this.alumnos.size() && buscado == null; i++) {
+			if (this.alumnos.get(i).getDni().equals(dni)) {
+				buscado =  this.alumnos.get(i);
+			}
+		}
+		return buscado;
+	}
+	
+	public void abrirComision (Integer codMateria, Integer numComision) {
+		Materia buscarMateriaParaComision = buscarMateria(codMateria);
+		if (buscarMateriaParaComision != null) {
+			Comision com0 = new Comision(buscarMateriaParaComision,numComision);	
+			comisiones.add(com0);
+			System.out.println("Comision para " + buscarMateriaParaComision.getNombre()+  " creada.");
+		}		
+	}
+	
+	public Integer getCantidadComisiones () {
+		return this.comisiones.size();
+	}
+	
+	public Comision getComision (Integer codComision) {
+		Comision buscada = null;
+		for (int i = 0; i < this.comisiones.size() && buscada == null; i++) {
+			if (this.comisiones.get(i).getCodigo().equals(codComision)) {
+				buscada = this.comisiones.get(i);
+			}
+		}
+		return buscada;
+	}
+
+	public boolean agregarAlumnoAComision(Integer dniAlumno1, Integer codComision) {
+		Alumno alumno = getAlumno(dniAlumno1);
+		Comision comision = getComision(codComision);
+		boolean pudoAgregar = false;
+		if (alumno != null && comision != null) {
+			pudoAgregar = comision.agregarAlumno(alumno);
+		}
+		return pudoAgregar;
+		
+		
 	}
 
 }

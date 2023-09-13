@@ -13,4 +13,8 @@ public class Alumno {
 	public Integer getDni () {
 		return this.dni;
 	}
+	
+	public String getNombre () {
+		return this.nombre;
+	}
 }

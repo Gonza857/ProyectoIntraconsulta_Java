@@ -84,5 +84,14 @@ public class Universidad {
 		}
 		return existe;
 	}
+	
+	public Integer getCantidadDeAlumnosRegistrados () {
+		System.out.println("Largo: " + this.alumnos.size());
+		return this.alumnos.size();
+	}
+	
+	public List<Alumno> getAlumnosRegistrados () {
+		return this.alumnos;
+	}
 
 }

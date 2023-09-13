@@ -169,4 +169,48 @@ public class Test {
 		assertFalse(ejecucion);		
 	}
 	
+	@org.junit.Test
+	public void queSeRegistrenTresALumnos () {
+		Universidad unlam = new Universidad("Unlam");
+		String nombreAlumno1 = "Gonzalo";
+		Integer dniAlumno1 =  300;
+		
+		String nombreAlumno2 = "Leonel";
+		Integer dniAlumno2 =  200;
+		
+		String nombreAlumno3 = "Dario";
+		Integer dniAlumno3 =  100;
+		
+		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno2, dniAlumno2);
+		unlam.registrarAlumno(nombreAlumno3, dniAlumno3);
+		
+		assertTrue(3 == unlam.getCantidadDeAlumnosRegistrados());		
+	}
+	
+	@org.junit.Test
+	public void traerListaDeAlumnosRegistrados () {
+		Universidad unlam = new Universidad("Unlam");
+		String nombreAlumno1 = "Gonzalo";
+		Integer dniAlumno1 =  300;
+		
+		String nombreAlumno2 = "Leonel";
+		Integer dniAlumno2 =  200;
+		
+		String nombreAlumno3 = "Dario";
+		Integer dniAlumno3 =  100;
+		
+		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno2, dniAlumno2);
+		unlam.registrarAlumno(nombreAlumno3, dniAlumno3);
+		
+		System.out.println("Registrados:");
+		List<Alumno> registrados = unlam.getAlumnosRegistrados();
+		for (int i = 0; i < registrados.size(); i++) {
+			System.out.println((i+1) +  ") " + registrados.get(i).getNombre());
+		}
+		
+		assertTrue(3 == registrados.size());		
+	}
+	
 }

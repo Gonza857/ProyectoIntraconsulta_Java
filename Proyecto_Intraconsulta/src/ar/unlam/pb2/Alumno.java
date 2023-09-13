@@ -9,4 +9,8 @@ public class Alumno {
 		this.nombre = nombre;
 		this.dni = dni;
 	}
+	
+	public Integer getDni () {
+		return this.dni;
+	}
 }

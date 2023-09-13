@@ -94,6 +94,29 @@ public class Test {
 	}
 	
 	@org.junit.Test
+	public void queNoSeAgregueUnaCorrelativa() {
+		Universidad unlam = new Universidad("unlam");
+		
+		String nombreMateria = "Programacion Basica 1";
+		Integer codigoMateria = 100;
+		String nombreMateria2 = "Programacion Basica 2";
+		Integer codigoMateria2 = 200;
+		Integer codigoDeMateriaNoRegistrada = 400;
+		
+		unlam.agregarMateria(nombreMateria, codigoMateria);
+		unlam.agregarMateria(nombreMateria2, codigoMateria2);
+		
+		boolean ejecucion = unlam.anadirCorrelativaMateria(codigoMateria2, codigoDeMateriaNoRegistrada);
+		
+		Materia buscada = unlam.buscarMateria(codigoMateria2);
+		List<Materia> correlativas = buscada.getCorrelativas();
+		
+		System.out.println("Materia " + nombreMateria2 + " tiene " + correlativas.size() + " correlativas");
+		
+		assertFalse(ejecucion);
+	}
+	
+	@org.junit.Test
 	public void queUnaMateriaTengaTresCorrelativas() {
 		Universidad unlam = new Universidad("unlam");
 		
@@ -126,5 +149,24 @@ public class Test {
 		assertTrue(3 == buscada.getCantidadCorrelativas());
 	}
 
+	@org.junit.Test
+	public void queSeAgregueUnAlumnoALaUniversidad () {
+		Universidad unlam = new Universidad("Unlam");
+		String nombreAlumno = "Gonzalo";
+		Integer dniAlumno =  45400606;
+		boolean ejecucion = unlam.registrarAlumno(nombreAlumno, dniAlumno);
+		assertTrue(ejecucion);		
+	}
+	
+	@org.junit.Test
+	public void queSeIntenteRegistrarUnAlumnoYaRegistrado () {
+		Universidad unlam = new Universidad("Unlam");
+		String nombreAlumno = "Gonzalo";
+		String nombreAlumno2 = "Leonel";
+		Integer dniAlumno =  45400606;
+		boolean ejecucion = unlam.registrarAlumno(nombreAlumno, dniAlumno);
+		ejecucion = unlam.registrarAlumno(nombreAlumno2, dniAlumno);
+		assertFalse(ejecucion);		
+	}
 	
 }

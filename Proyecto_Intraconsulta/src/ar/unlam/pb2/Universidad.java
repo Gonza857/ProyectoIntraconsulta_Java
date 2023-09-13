@@ -15,6 +15,7 @@ public class Universidad {
 	public Universidad (String nombre) {
 		this.nombre = nombre;
 		this.materias = new ArrayList<>();
+		this.alumnos = new ArrayList<>();
 	}
 	
 	public List<Materia> getMaterias () {
@@ -50,12 +51,38 @@ public class Universidad {
 	public boolean anadirCorrelativaMateria (Integer materiaCod, Integer correlativaCod) {
 		Materia materia = buscarMateria(materiaCod);
 		Materia correlativa = buscarMateria(correlativaCod);
+		System.out.println(correlativa);
 		boolean fueAgregada = false;
-		if (materia != null) {
+		if (materia != null && correlativa != null) {
 			materia.anadirCorrelativa(correlativa);
 			fueAgregada = true;
+			System.out.println("Añadido.");
 		}
 		return fueAgregada;
+	}
+
+	public boolean registrarAlumno(String nombreAlumno, Integer dniAlumno) {
+		boolean fueAgregado = false;
+		if (!verificarSiYaExisteElAlumno(dniAlumno)) {
+			Alumno nuevoAlumno = new Alumno(nombreAlumno, dniAlumno);
+			Integer largo = this.alumnos.size();
+			this.alumnos.add(nuevoAlumno);
+			if (this.alumnos.size() > largo ) {
+				fueAgregado = true;
+			}
+		}
+		
+		return fueAgregado;
+	}
+	
+	public boolean verificarSiYaExisteElAlumno (Integer dni) {
+		boolean existe = false;
+		for (int i = 0; i < this.alumnos.size(); i++) {
+			if (this.alumnos.get(i).getDni().equals(dni)) {
+				existe = true;
+			}
+		}
+		return existe;
 	}
 
 }

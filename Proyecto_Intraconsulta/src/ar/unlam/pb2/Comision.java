@@ -26,9 +26,22 @@ public class Comision {
 		}
 		return fueAgregado;
 	}
+	public boolean agregarProfesor (Profesor profesor) {
+		Integer largo = this.profesores.size();
+		boolean fueAgregado = false;
+		profesores.add(profesor);
+		if (this.profesores.size() > largo) {
+			fueAgregado = true;
+			System.out.println(profesor.getNombre() + " fue agregado a " + "comision de " + materiaAsignada.getNombre());
+		}
+		return fueAgregado;
+	}
 	
 	public List<Alumno> getAlumnosDeComision () {
 		return this.alumnos;
+	}
+	public List<Profesor> getProfesoresDeComision () {
+		return this.profesores;
 	}
 	
 	public Integer getCodigo () {

@@ -2,6 +2,8 @@ package ar.unlam.pb2.test;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import ar.unlam.pb2.*;
@@ -153,8 +155,11 @@ public class Test {
 	public void queSeAgregueUnAlumnoALaUniversidad () {
 		Universidad unlam = new Universidad("Unlam");
 		String nombreAlumno = "Gonzalo";
+		String apellidoAlumno = "Casto";
+		LocalDate fechaNacimiento = LocalDate.parse("1998-05-13");
+		LocalDate fechaIngreso = LocalDate.now();
 		Integer dniAlumno =  45400606;
-		boolean ejecucion = unlam.registrarAlumno(nombreAlumno, dniAlumno);
+		boolean ejecucion = unlam.registrarAlumno(nombreAlumno, apellidoAlumno, fechaNacimiento, fechaIngreso, dniAlumno);
 		assertTrue(ejecucion);		
 	}
 	
@@ -162,10 +167,19 @@ public class Test {
 	public void queSeIntenteRegistrarUnAlumnoYaRegistrado () {
 		Universidad unlam = new Universidad("Unlam");
 		String nombreAlumno = "Gonzalo";
+		String apellidoAlumno = "Casto";
+		LocalDate fechaNacimiento = LocalDate.parse("1998-05-13");
+		LocalDate fechaIngreso = LocalDate.now();
+		
 		String nombreAlumno2 = "Leonel";
+		String apellidoAlumno2 = "Casto";
+		LocalDate fechaNacimiento2 = LocalDate.parse("1995-04-25");
+		LocalDate fechaIngreso2 = LocalDate.now();
+		
 		Integer dniAlumno =  45400606;
-		boolean ejecucion = unlam.registrarAlumno(nombreAlumno, dniAlumno);
-		ejecucion = unlam.registrarAlumno(nombreAlumno2, dniAlumno);
+		
+		boolean ejecucion = unlam.registrarAlumno(nombreAlumno, apellidoAlumno, fechaNacimiento, fechaIngreso, dniAlumno);
+		ejecucion = unlam.registrarAlumno(nombreAlumno2, apellidoAlumno2, fechaNacimiento2, fechaIngreso2, dniAlumno);
 		assertFalse(ejecucion);		
 	}
 	
@@ -181,9 +195,9 @@ public class Test {
 		String nombreAlumno3 = "Dario";
 		Integer dniAlumno3 =  100;
 		
-		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
-		unlam.registrarAlumno(nombreAlumno2, dniAlumno2);
-		unlam.registrarAlumno(nombreAlumno3, dniAlumno3);
+		unlam.registrarAlumno(nombreAlumno1, "", null, null, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno2, "", null, null, dniAlumno2);
+		unlam.registrarAlumno(nombreAlumno3, "", null, null, dniAlumno3);
 		
 		assertTrue(3 == unlam.getCantidadDeAlumnosRegistrados());		
 	}
@@ -200,9 +214,9 @@ public class Test {
 		String nombreAlumno3 = "Dario";
 		Integer dniAlumno3 =  100;
 		
-		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
-		unlam.registrarAlumno(nombreAlumno2, dniAlumno2);
-		unlam.registrarAlumno(nombreAlumno3, dniAlumno3);
+		unlam.registrarAlumno(nombreAlumno1, "", null, null, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno2, "", null, null, dniAlumno2);
+		unlam.registrarAlumno(nombreAlumno3, "", null, null, dniAlumno3);
 		
 		System.out.println("Registrados:");
 		List<Alumno> registrados = unlam.getAlumnosRegistrados();
@@ -222,7 +236,7 @@ public class Test {
 		Integer codPb1 = 101;
 
 		unlam.agregarMateria(pb1, codPb1);
-		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno1, "", null, null, dniAlumno1);
 		unlam.abrirComision(codPb1, 1000);
 		
 		assertTrue(1 == unlam.getCantidadComisiones());		
@@ -236,7 +250,7 @@ public class Test {
 		Integer codPb1 = 101;
 
 		unlam.agregarMateria(pb1, codPb1);
-		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno1, "", null, null, dniAlumno1);
 		unlam.abrirComision(codPb1, 1000);
 		
 		Alumno alumnoParaAgregar = unlam.getAlumno(dniAlumno1);
@@ -260,9 +274,9 @@ public class Test {
 		String nombreAlumno3 = "Dario";
 		Integer dniAlumno3 =  100;
 		
-		unlam.registrarAlumno(nombreAlumno1, dniAlumno1);
-		unlam.registrarAlumno(nombreAlumno2, dniAlumno2);
-		unlam.registrarAlumno(nombreAlumno3, dniAlumno3);
+		unlam.registrarAlumno(nombreAlumno1, "", null, null, dniAlumno1);
+		unlam.registrarAlumno(nombreAlumno2, "", null, null, dniAlumno2);
+		unlam.registrarAlumno(nombreAlumno3, "", null, null, dniAlumno3);
 		
 		String pb1 = "Programacion Basica 1";
 		Integer codPb1 = 101;

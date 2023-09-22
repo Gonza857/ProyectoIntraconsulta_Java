@@ -23,7 +23,6 @@ public class Materia {
 		}
 		return fueAgregada;
 	}
-
 	public Integer getCantidadCorrelativas() {
 		return this.correlativas.size();
 	}

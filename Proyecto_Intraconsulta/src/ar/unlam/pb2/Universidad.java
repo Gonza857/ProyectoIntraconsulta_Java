@@ -1,6 +1,7 @@
 	package ar.unlam.pb2;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.swing.plaf.FontUIResource;
@@ -63,10 +64,10 @@ public class Universidad {
 		return fueAgregada;
 	}
 
-	public boolean registrarAlumno(String nombreAlumno, Integer dniAlumno) {
+	public boolean registrarAlumno(String nombreAlumno, String apellidoAlumno, LocalDate fechaNacimiento, LocalDate fechaIngreso, Integer dniAlumno) {
 		boolean fueAgregado = false;
 		if (!verificarSiYaExisteElAlumno(dniAlumno)) {
-			Alumno nuevoAlumno = new Alumno(nombreAlumno, dniAlumno);
+			Alumno nuevoAlumno = new Alumno(nombreAlumno, apellidoAlumno, fechaNacimiento, fechaIngreso, dniAlumno);
 			Integer largo = this.alumnos.size();
 			this.alumnos.add(nuevoAlumno);
 			if (this.alumnos.size() > largo ) {

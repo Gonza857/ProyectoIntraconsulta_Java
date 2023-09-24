@@ -12,6 +12,9 @@ import ar.unlam.pb2.Universidad;
 
 public class TestClaseAlumnos {
 
+	
+	// Para que quede mas prolijo podemos rellenar los campos que puse nulos por simple facilidad de trabajo.
+	
 	@org.junit.Test
 	public void queSeAgregueUnAlumnoALaUniversidad () {
 		Universidad unlam = new Universidad("Unlam");

@@ -5,12 +5,14 @@ public class CicloLectivo {
 	private LocalDate fechaInscripcion;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFinalizacion;
+	private Integer id = 0;
 	
 	
 	public CicloLectivo(LocalDate fechaInscripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion) {
 		this.fechaInscripcion = fechaInscripcion;
 		this.fechaInicio = fechaInicio;
 		this.fechaFinalizacion = fechaFinalizacion;
+		this.id ++;
 	}
 
 
@@ -41,6 +43,16 @@ public class CicloLectivo {
 
 	public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
 		this.fechaFinalizacion = fechaFinalizacion;
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

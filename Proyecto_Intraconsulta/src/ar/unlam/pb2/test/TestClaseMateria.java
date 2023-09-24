@@ -161,4 +161,40 @@ public class TestClaseMateria {
 		assertTrue(3 == buscada.getCantidadCorrelativas());
 	}
 
+	@org.junit.Test
+	public void eliminarUnaCorrelativas() {
+		Universidad unlam = new Universidad("unlam");
+		
+		String bd1 = "Base de datos 1";
+		Integer codBd1 = 201;
+		String pb1 = "Programacion Basica 1";
+		Integer codPb1 = 101;
+		String ig = "Informatica general";
+		Integer codIg = 102;
+		String mg = "Matematica general";
+		Integer codMg = 103;
+		
+		unlam.agregarMateria(bd1, codBd1);
+		unlam.agregarMateria(pb1, codPb1);
+		unlam.agregarMateria(ig, codIg);
+		unlam.agregarMateria(mg, codMg);
+		
+		unlam.anadirCorrelativaMateria(codBd1, codPb1);
+		unlam.anadirCorrelativaMateria(codBd1, codIg);
+		unlam.anadirCorrelativaMateria(codBd1, codMg);
+		
+		Materia buscada = unlam.buscarMateria(codBd1);
+		Materia aEliminar = unlam.buscarMateria(codIg);
+		buscada.eliminarCorrelativa(aEliminar);
+		
+		List<Materia> correlativas = buscada.getCorrelativas();
+		
+		System.out.println("Correlativas de: " + bd1);
+		for (int i = 0;i < correlativas.size(); i++) {
+			System.out.println(correlativas.get(i).getNombre());
+		}
+		
+		 
+		assertTrue(2 == buscada.getCantidadCorrelativas());
+	}
 }

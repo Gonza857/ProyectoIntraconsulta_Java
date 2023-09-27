@@ -543,7 +543,7 @@ public class TestAsignacionCursoAlumno {
 		LocalDate fechaFinalizacion2 = LocalDate.parse("1992-12-01");
 		
 		Integer numComision = 1000;
-		Integer numComision2 = 1111;
+		Integer numComision2 = 1110;
 		Aula aula = new Aula(23,30);
 		CicloLectivo cicloLectivo = new CicloLectivo(fechaIncripcion,fechaInicio,fechaFinalizacion);
 		CicloLectivo cicloLectivo2 = new CicloLectivo(fechaIncripcion,fechaInicio2,fechaFinalizacion2);

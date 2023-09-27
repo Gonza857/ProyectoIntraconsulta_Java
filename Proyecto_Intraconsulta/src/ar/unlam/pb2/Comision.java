@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Comision {
 	
-	private List<Nota> registroDeExamenes;
+	private Double promedioFinal;
 	private Integer codigo;
 	private Materia materiaAsignada;
 	private Turno turno;
 	private CicloLectivo cicloLectivoAsignado;
-	private Aula aulaAsignada;
+	private Aula aulaAsignada; 
 	
 	
 
@@ -20,20 +20,14 @@ public class Comision {
 		this.aulaAsignada = aula;
 		this.cicloLectivoAsignado = cicloLectivo;
 		this.turno = turno;
+		this.promedioFinal = null;
 		
 	}
 	
 
 	
+ 
 
-	public List<Nota> getRegistroDeExamenes() {
-		return registroDeExamenes;
-	}
-
-
-	public void setRegistroDeExamenes(List<Nota> registroDeExamenes) {
-		this.registroDeExamenes = registroDeExamenes;
-	}
 
 
 	public Materia getMateriaAsignada() {
@@ -89,5 +83,25 @@ public class Comision {
 
 	public void setTurno(Turno turno) {
 		this.turno = turno;
+	}
+
+
+
+
+
+
+
+	public Double getPromedioFinal() {
+		return promedioFinal;
+	}
+
+
+
+
+
+
+
+	public void setPromedioFinal(Double promedioFinal) {
+		this.promedioFinal = promedioFinal;
 	}
 }

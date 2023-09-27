@@ -6,7 +6,6 @@ public class Nota {
 	private Instancia instancia;
 	
 	public Nota(Integer valor, Instancia instancia) {
-		super();
 		this.valor = valor;
 		this.instancia = instancia;
 	}

@@ -25,43 +25,10 @@ public class CursoAlumno {
 		this.condicionFinal = CondicionFinal.CURSANDO;
 	}
 
-	public boolean asignarNota (Integer valorNota, Integer dni) {
-		boolean asignada = false;
-		if(!verificarQueNoHayaFinalizado()) {
-		
-		Instancia[] instancias = Instancia.values();
-		Integer largo = this.notas.size();
-		Nota aAsignar = new Nota(valorNota, instancias[this.contador]) ;
-
-		notas.add(aAsignar);
-		System.out.println("Se asigno la nota de " + valorNota + " en la intancia de " + instancias[this.contador] + " al alumno " + alumno.getNombre());
-		if(largo < this.notas.size()) {
-			asignada = true;
-			if(valorNota >= 4) {
-				this.contador += 2;
-			}else {
-				this.contador++;
-			}
-			
-			
-			
-		}}
-		if(valorNota > 4) {
-			this.contadorAprobadas++;
-		}
-		if(this.contadorAprobadas >= 2) {
-			actualizarSituacion();
-		}
-		
-		return asignada;
-		
-	}
 
 
 
-	
-
-	private void actualizarSituacion() {
+	public void actualizarSituacion() {
 		if(this.notas.size() >=2) {
 			if(promedioNotas() < 4) {
 				this.condicionFinal = CondicionFinal.DESAPROBADO;
@@ -92,30 +59,6 @@ public class CursoAlumno {
 		return promedio;
 	}
 
-	private boolean verificarQueNoHayaFinalizado() {
-		boolean termino = true;
-		if(getCondicionFinal().equals(CondicionFinal.CURSANDO)) {
-			termino = false;
-		}
-		
-		return termino;
-	}
-
-	
-
-//	private Comision getComision(Integer codigo) {
-//		Comision buscado = null;
-//		for (int i = 0; i < this.comisiones.size() && buscado == null; i++) {
-//			if (this.comisiones.get(i).getCodigo().equals(codigo)) {
-//				buscado =  this.comisiones.get(i);
-//			}
-//		}
-//		return buscado;
-//	}
-
-
-
-
 	public List<Nota> getNotas() {
 		return notas;
 	}
@@ -125,15 +68,6 @@ public class CursoAlumno {
 		this.notas = notas;
 	}
 
-//	public Alumno getAlumno (Integer dni) {
-//		Alumno buscado = null;
-//		for (int i = 0; i < this.alumnos.size() && buscado == null; i++) {
-//			if (this.alumnos.get(i).getDni().equals(dni)) {
-//				buscado =  this.alumnos.get(i);
-//			}
-//		}
-//		return buscado;
-//	}
 	public Integer getId() {
 		return id;
 	}
@@ -151,9 +85,6 @@ public class CursoAlumno {
 		this.contador = contador;
 	}
 
-	public CondicionFinal getCondicionFinal() {
-		return condicionFinal;
-	}
 
 	public void setCondicionFinal(CondicionFinal condicionFinal) {
 		this.condicionFinal = condicionFinal;
@@ -173,5 +104,39 @@ public class CursoAlumno {
 
 	public void setComision(Comision comision) {
 		this.comision = comision;
+	}
+
+
+
+
+	public Integer getContadorAprobadas() {
+		return contadorAprobadas;
+	}
+
+
+
+
+	public void setContadorAprobadas(Integer contadorAprobadas) {
+		this.contadorAprobadas = contadorAprobadas;
+	}
+
+
+
+
+	public CondicionFinal getCondicionFinal() {
+		return condicionFinal;
+	}
+
+
+
+
+	public boolean setNotasAdd(Nota aAsignar) {
+	boolean asignada = false;
+	Integer largo = this.notas.size();
+	 this.notas.add(aAsignar);
+	 if(largo < this.notas.size()) {
+		 asignada = true;
+	 }
+	return asignada;	
 	}
 }

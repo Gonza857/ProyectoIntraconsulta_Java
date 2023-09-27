@@ -23,7 +23,15 @@ public class Materia {
 		}
 		return fueAgregada;
 	}
-
+	public boolean eliminarCorrelativa(Materia materiaAEliminar) {
+		boolean fueAgregada = false;
+		Integer largoActual = this.correlativas.size();
+		correlativas.remove(materiaAEliminar);
+		if (this.correlativas.size() < largoActual) {
+			fueAgregada = true;
+		}
+		return fueAgregada;
+	}
 	public Integer getCantidadCorrelativas() {
 		return this.correlativas.size();
 	}

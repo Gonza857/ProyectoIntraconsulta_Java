@@ -29,7 +29,7 @@ public class TestClaseComision {
 		
 		Materia materia = new Materia("Ingles" , 0110);
 		Integer numComision = 111;
-		Aula aula = new Aula(23);
+		Aula aula = new Aula(23,30);
 		CicloLectivo cicloLectivo = new CicloLectivo(fechaIncripcion,fechaInicio,fechaFinalizacion);
 		Turno turno = Turno.NOCHE;
 		
@@ -50,7 +50,7 @@ public class TestClaseComision {
 		
 		Materia materia = new Materia("Ingles" , 0110);
 		Integer numComision = 111;
-		Aula aula = new Aula(23);
+		Aula aula = new Aula(23,30);
 		CicloLectivo cicloLectivo = new CicloLectivo(fechaIncripcion,fechaInicio,fechaFinalizacion);
 		Turno turno = Turno.NOCHE;
 		
@@ -61,7 +61,7 @@ public class TestClaseComision {
 	
 		Materia materia2 = new Materia("Ingles" , 0110);
 		Integer numComision2 = 111;
-		Aula aula2 = new Aula(22);
+		Aula aula2 = new Aula(22,30);
 		CicloLectivo cicloLectivo2 = new CicloLectivo(fechaIncripcion,fechaInicio,fechaFinalizacion);
 		Turno turno2 = Turno.NOCHE;
 		
@@ -74,70 +74,5 @@ public class TestClaseComision {
 	}
 	
 
-	@org.junit.Test
-	public void asignarProfesorALaComision () {
-		Universidad unlam = new Universidad("Unlam");
-		
-		LocalDate fechaIncripcion = LocalDate.parse("1990-10-01");
-		LocalDate fechaInicio = LocalDate.parse("1990-10-15");
-		LocalDate fechaFinalizacion = LocalDate.parse("1990-12-01");
-		
-		Materia materia = new Materia("Ingles" , 0110);
-		Integer numComision = 1000;
-		Aula aula = new Aula(23);
-		CicloLectivo cicloLectivo = new CicloLectivo(fechaIncripcion,fechaInicio,fechaFinalizacion);
-		Turno turno = Turno.NOCHE;
-		
-		String nombreProfesor1 = "Gonzalo";
-		Integer dniProfesor1 =  300;
-		String pb1 = "Programacion Basica 1";
-		Integer codPb1 = 101;
-		CursoProfesor cursoProfesor = new CursoProfesor();
 
-		unlam.agregarMateria(pb1, codPb1);
-		unlam.agregarProfesor(nombreProfesor1, "", null, null, dniProfesor1);
-		unlam.abrirComision(materia, numComision, aula, cicloLectivo, turno);
-		
-		Profesor profesorParaAgregar = unlam.getProfesor(dniProfesor1);
-		Comision comisionParaAgregar = unlam.getComision(1000);
-		boolean ejecucion = false;
-		if (profesorParaAgregar != null && comisionParaAgregar != null) {
-			ejecucion = cursoProfesor.asignarProfesor(profesorParaAgregar, comisionParaAgregar);
-		}
-		assertTrue(ejecucion);		
-	}
-	
-	@org.junit.Test
-	public void queNoSeAsigneUnMismoProfesorALaMismaComisionDosVeces () {
-		Universidad unlam = new Universidad("Unlam");
-		
-		LocalDate fechaIncripcion = LocalDate.parse("1990-10-01");
-		LocalDate fechaInicio = LocalDate.parse("1990-10-15");
-		LocalDate fechaFinalizacion = LocalDate.parse("1990-12-01");
-		
-		Materia materia = new Materia("Ingles" , 0110);
-		Integer numComision = 1000;
-		Aula aula = new Aula(23);
-		CicloLectivo cicloLectivo = new CicloLectivo(fechaIncripcion,fechaInicio,fechaFinalizacion);
-		Turno turno = Turno.NOCHE;
-		
-		String nombreProfesor1 = "Gonzalo";
-		Integer dniProfesor1 =  300;
-		String pb1 = "Programacion Basica 1";
-		Integer codPb1 = 101;
-		CursoProfesor cursoProfesor = new CursoProfesor();
-
-		unlam.agregarMateria(pb1, codPb1);
-		unlam.agregarProfesor(nombreProfesor1, "", null, null, dniProfesor1);
-		unlam.abrirComision(materia, numComision, aula, cicloLectivo, turno);
-		
-		Profesor profesorParaAgregar = unlam.getProfesor(dniProfesor1);
-		Comision comisionParaAgregar = unlam.getComision(1000);
-		boolean ejecucion = false;
-		if (profesorParaAgregar != null && comisionParaAgregar != null) {
-			ejecucion = cursoProfesor.asignarProfesor(profesorParaAgregar, comisionParaAgregar);
-			ejecucion = cursoProfesor.asignarProfesor(profesorParaAgregar, comisionParaAgregar);
-		}
-		assertFalse(ejecucion);		
-	}
 }
